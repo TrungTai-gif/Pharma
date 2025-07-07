@@ -32,8 +32,8 @@ include "includes/head.php"
               <a href="#" class="h-100">
                 <h5>Miễn phí <br> Vận chuyển</h5>
                 <p>
-                  0 VND phí giao hàng cho tất cả đơn hàng
-                  <strong>trên 100.000.</strong>
+                  0₫ phí giao hàng cho tất cả đơn hàng
+                  <strong>trên 100.000₫</strong>
                 </p>
               </a>
             </div>
