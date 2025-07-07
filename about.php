@@ -14,7 +14,7 @@ include "includes/head.php"
       <div class="container">
         <div class="row">
           <div class="col-lg-7 mx-auto align-self-center">
-            <div class=" text-center">
+            <div class=" text-center hover">
               <h1>Về Chúng Tôi</h1>
             </div>
           </div>
