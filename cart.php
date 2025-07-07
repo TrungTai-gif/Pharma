@@ -53,9 +53,9 @@ include "includes/head.php"
                           <td class="product-name">
                             <h2 class="h5 text-black"><?php echo $data[$i][0]['item_title'] ?></h2>
                           </td>
-                          <td>₹<?php echo $data[$i][0]['item_price'] ?></td>
+                          <td><?php echo $data[$i][0]['item_price'] ?> VND</td>
                           <td><?php echo $_SESSION['cart'][$i]['quantity'] ?></td>
-                          <td>₹<?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity']) ?></td>
+                          <td><?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity']) ?> VND</td>
                           <td><a href="cart.php?delete=<?php echo $data[$i][0]['item_id'] ?>" class="btn btn-primary height-auto btn-sm">Xóa</a></td>
                         </tr>
                     <?php }
@@ -86,7 +86,7 @@ include "includes/head.php"
                     for ($i = 0; $i < $num; $i++) {
                       if (isset($data[$i])) {
                     ?>
-                        <strong class="text-black">₹<?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity']) ?></strong> <br>
+                        <strong class="text-black"><?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity']) ?> VND</strong> <br>
                     <?php
                       }
                     }
@@ -99,7 +99,7 @@ include "includes/head.php"
                     <span class="text-black font-weight-bold">Tổng cộng</span>
                   </div>
                   <div class="col-md-6 text-right font-weight-bold">
-                    <strong class="text-black">₹<?php echo total_price($data); ?></strong>
+                    <strong class="text-black"><?php echo total_price($data); ?> VND</strong>
                   </div>
                 </div>
 

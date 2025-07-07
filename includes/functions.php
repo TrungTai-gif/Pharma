@@ -1,5 +1,7 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "Pharma");
+mysqli_set_charset($connection, "utf8mb4");
+
 // $connection = mysqli_connect("localhost", "id18666014_pharma1", "tXU!y/6D\EH_{<[6", "id18666014_pharma");
 function post_redirect($url)
 {

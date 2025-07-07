@@ -84,7 +84,7 @@ include "includes/head.php"
             </div>
             <div class="text">
               <h2>Miễn Phí Giao Hàng</h2>
-              <p>Miễn phí vận chuyển khi bạn đặt đơn từ 200₹ trở lên</p>
+              <p>Miễn phí vận chuyển khi bạn đặt đơn từ 60.000₫ trở lên</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
