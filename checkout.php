@@ -1,5 +1,5 @@
 <?php
-include "includes/head.php"
+include "includes/head.php";
 ?>
 
 <body>
@@ -77,33 +77,36 @@ include "includes/head.php"
                         $num = sizeof($data);
                         for ($i = 0; $i < $num; $i++) {
                           if (isset($data[$i])) {
-                      ?>
+                            ?>
                             <tr>
-                              <td><?php echo $data[$i][0]['item_title'] ?><strong class="mx-2">x</strong><?php echo $_SESSION['cart'][$i]['quantity'] ?></td>
-                              <td>₹<?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity'])  ?></td>
+                              <td><?php echo $data[$i][0]['item_title'] ?><strong
+                                  class="mx-2">x</strong><?php echo $_SESSION['cart'][$i]['quantity'] ?></td>
+                              <td><?php echo ($data[$i][0]['item_price'] * $_SESSION['cart'][$i]['quantity']) ?> VND</td>
                             </tr>
-                      <?php
+                            <?php
                           }
                         }
                       }
                       ?>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Tạm tính</strong></td>
-                        <td class="text-black">₹<?php echo total_price($data) ?></td>
+                        <td class="text-black"><?php echo total_price($data) ?> VND</td>
                       </tr>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Phí giao hàng</strong></td>
-                        <td class="text-black">₹<?php echo delivery_fees($data) ?></td>
+                        <td class="text-black"><?php echo delivery_fees($data) ?> VND</td>
                       </tr>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Tổng cộng</strong></td>
-                        <td class="text-black font-weight-bold"><strong>₹<?php echo delivery_fees($data) + total_price($data) ?></strong></td>
+                        <td class="text-black font-weight-bold">
+                          <strong><?php echo delivery_fees($data) + total_price($data) ?> VND</strong></td>
                       </tr>
                     </tbody>
                   </table>
 
                   <div class="form-group">
-                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='thankyou.php?order=done'">
+                    <button class="btn btn-primary btn-lg btn-block"
+                      onclick="window.location='thankyou.php?order=done'">
                       Đặt hàng
                     </button>
                   </div>
@@ -118,7 +121,7 @@ include "includes/head.php"
     </div>
 
     <?php
-    include "includes/footer.php"
+    include "includes/footer.php";
     ?>
   </div>
 </body>

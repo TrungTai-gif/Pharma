@@ -39,7 +39,7 @@ include "includes/head.php"
                     <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"><?php echo mb_substr($data[$i]['item_title'], 0, 20, "UTF-8") . "..." ?></a>
                   </h3>
                 <?php } ?>
-                <p class="price">₹<?php echo $data[$i]['item_price'] ?></p>
+                <p class="price"><?php echo $data[$i]['item_price'] ?> VND</p>
               </div>
             <?php
             }
@@ -68,7 +68,7 @@ include "includes/head.php"
                       <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"><?php echo substr($data[$i]['item_title'], 0, 20) . "..." ?></a>
                     </h3>
                   <?php } ?>
-                  <p class="price">₹<?php echo $data[$i]['item_price'] ?></p>
+                  <p class="price"><?php echo $data[$i]['item_price'] ?> VND</p>
                 </div>
               <?php
                 if ($i == 2) {
@@ -94,7 +94,7 @@ include "includes/head.php"
                     <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"><?php echo substr($data[$i]['item_title'], 0, 20) . "..." ?></a>
                   </h3>
                 <?php } ?>
-                <p class="price">₹<?php echo $data[$i]['item_price'] ?></p>
+                <p class="price"><?php echo $data[$i]['item_price'] ?> VND</p>
               </div>
             <?php
               if ($i == 11) {

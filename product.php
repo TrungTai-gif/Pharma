@@ -31,7 +31,7 @@ include "includes/head.php"
             <h2 class="text-black"><?php echo $data[0]['item_title'] ?></h2>
             <p><?php echo $data[0]['item_details'] ?></p>
 
-            <p><strong class="text-primary h4">₹<?php echo $data[0]['item_price'] ?></strong></p>
+            <p><strong class="text-primary h4"><?php echo $data[0]['item_price'] ?> VND</strong></p>
             <?php
             if ($data[0]['item_quantity'] > 0) {
             ?>
@@ -99,7 +99,7 @@ include "includes/head.php"
                       <?php if ($data[0]['item_price'] >= 200) {
                         echo "<td class='bg-light'>Miễn phí</td>";
                       } else {
-                        echo "<td class='bg-light'>₹40</td>";
+                        echo "<td class='bg-light'>40 VND</td>";
                       }
                       ?>
                     </tr>
