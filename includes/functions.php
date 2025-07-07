@@ -326,9 +326,8 @@ function all_products_reverse()
 function delivery_fees($data)
 {
     if (total_price($data) < 100000) {
-        $num = sizeof($data);
-        return $num * 40000;
+        return 40000; // Phí giao hàng cố định nếu đơn hàng nhỏ hơn 100,000
     } else {
-        return 0;
+        return 0; // Miễn phí giao hàng
     }
 }
