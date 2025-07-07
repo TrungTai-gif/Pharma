@@ -25,7 +25,7 @@
                             <ul class="dropdown">
                                 <li><a href="store.php?cat=medicine">Thuốc</a></li>
                                 <li><a href="store.php?cat=self-care">Chăm sóc cá nhân</a></li>
-                                <li><a href="store.php?cat=medicine">Thiết bị</a></li>
+                                <li><a href="store.php?cat=machine">Thiết bị</a></li>
                             </ul>
                         </li>
                         <li><a href="about.php">Giới thiệu</a></li>
