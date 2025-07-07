@@ -47,7 +47,7 @@
           <ul class="list-unstyled">
             <li class="address">SỐ 18, TẦNG 1, ĐƯỜNG NGUYỄN VĂN QUÁ,
             GÒ VẤP, TP.HỒ CHÍ MINH, VIỆT NAM - 70000</li>
-            <li class="phone"><a href="tel://23923929210">+91 966 3034 110</a></li>
+            <li class="phone"><a href="tel://23923929210">+84 23 456 789</a></li>
             <li class="email">taint1272@gmail.com</li>
           </ul>
         </div>

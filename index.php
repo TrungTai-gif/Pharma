@@ -29,7 +29,7 @@ include "includes/head.php"
         <div class="row align-items-stretch section-overlap">
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap bg-primary h-100">
-              <a href="#" class="h-100">
+              <a class="h-100">
                 <h5>Miễn phí <br> Vận chuyển</h5>
                 <p>
                   0₫ phí giao hàng cho tất cả đơn hàng
@@ -40,7 +40,7 @@ include "includes/head.php"
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap h-100">
-              <a href="#" class="h-100">
+              <a class="h-100">
                 <h5>Khuyến mãi <br> giảm 50%</h5>
                 <p>
                   Giảm đến 80% cho các sản phẩm chăm sóc sức khỏe.
@@ -50,7 +50,7 @@ include "includes/head.php"
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap bg-warning h-100">
-              <a href="#" class="h-100">
+              <a class="h-100">
                 <h5>Sản phẩm <br> mới</h5>
                 <p>
                   Khám phá hơn 10.000 sản phẩm.
@@ -172,7 +172,7 @@ include "includes/head.php"
                     tuyệt vời!&rdquo;</p>
                 </blockquote>
 
-                <p>&mdash; Kelly Holmes</p>
+                <p>&mdash; Bích My</p>
               </div>
 
               <div class="testimony">
@@ -183,7 +183,7 @@ include "includes/head.php"
                     và chắc chắn sẽ giới thiệu đến những ai cần mua thuốc với chi phí hợp lý và thường xuyên.&rdquo;</p>
                 </blockquote>
 
-                <p>&mdash; Rebecca Morando</p>
+                <p>&mdash; Thanh Nhung</p>
               </div>
 
               <div class="testimony">
@@ -195,7 +195,7 @@ include "includes/head.php"
                     tốt.&rdquo;</p>
                 </blockquote>
 
-                <p>&mdash; Lucas Gallone</p>
+                <p>&mdash;  Trung Tai</p>
               </div>
 
               <div class="testimony">
