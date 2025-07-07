@@ -1,0 +1,43 @@
+name: Chay web PHP + MySQL de cham diem
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  run-web:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: pharma
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Lay code tu GitHub
+        uses: actions/checkout@v3
+
+      - name: Cai dat PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Kiem tra cu phap PHP
+        run: find . -type f -name "*.php" -exec php -l {} \;
+
+      - name: Cho database san sang
+        run: sleep 15
+
+      - name: Nhap file Pharma.sql vao MySQL
+        run: |
+          mysql -h 127.0.0.1 -u root -proot pharma < SQL/Pharma.sql
