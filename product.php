@@ -96,10 +96,10 @@ include "includes/head.php"
                     </tr>
                     <tr>
                       <td>PHÍ GIAO HÀNG</td>
-                      <?php if ($data[0]['item_price'] >= 200) {
+                      <?php if ($data[0]['item_price'] >= 100000) {
                         echo "<td class='bg-light'>Miễn phí</td>";
                       } else {
-                        echo "<td class='bg-light'>40 VND</td>";
+                        echo "<td class='bg-light'>40000 VND</td>";
                       }
                       ?>
                     </tr>

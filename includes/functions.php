@@ -325,9 +325,9 @@ function all_products_reverse()
 }
 function delivery_fees($data)
 {
-    if (total_price($data) < 200) {
+    if (total_price($data) < 100000) {
         $num = sizeof($data);
-        return $num * 40;
+        return $num * 40000;
     } else {
         return 0;
     }
