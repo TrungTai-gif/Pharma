@@ -1623,3 +1623,36 @@ a:hover {
 .custom-table td {
   color: #000;
 }
+
+/* Màu chữ khi hover và hiệu ứng underline */
+.site-menu li a {
+  position: relative;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.site-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #00a8ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.site-menu li a:hover {
+  color: #00a8ff;
+}
+
+.site-menu li a:hover::after {
+  width: 100%;
+}
+.site-blocks-cover {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+
