@@ -231,6 +231,7 @@ a:hover {
   top: 0;
   width: 100%;
   background: #fff;
+  position: fixed;
 }
 
 .site-navbar.position-relative {
@@ -698,6 +699,10 @@ a:hover {
 .site-blocks-cover.inner-page .row {
   min-height: 400px;
   height: 700px;
+}
+
+.site-blocks-cover{
+  margin-top: 81.5px;
 }
 
 .site-blocks-cover h2 {

@@ -195,7 +195,7 @@ include "includes/head.php"
                     tốt.&rdquo;</p>
                 </blockquote>
 
-                <p>&mdash;  Trung Tai</p>
+                <p>&mdash;  Trung Tài</p>
               </div>
 
               <div class="testimony">
