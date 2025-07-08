@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 07, 2025 lúc 08:57 PM
+-- Thời gian đã tạo: Th7 08, 2025 lúc 11:41 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `admin_email` varchar(50) NOT NULL,
   `admin_fname` varchar(20) NOT NULL,
   `admin_lname` varchar(20) NOT NULL,
-  `admin_password` varchar(50) NOT NULL
+  `admin_password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_fname`, `admin_lname`, `admin_password`) VALUES
-(4, 'admin@gmail.com', 'Nguyen', 'Tai', 'admin');
+(16, 'nguyentai2292005@gmail.com', 'Tai', 'Nguyen', '$2y$10$8D/TskqbFxZCYOI/Yc.VQOIJspja1BAfC4IB1UuEGiEDiJwAvQm2.'),
+(17, 'admin@gmail.com', 'Tai', 'Nguyen', '$2y$10$fHl24Lx9cOzO7DaCZkOdXeFglneJnuc8ItlO3kmfjYiKTnEbJDIoa');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,7 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 (18, 'Máy đo huyết áp Omron HEM-7121J', 'Omron', 'machine', 'Máy đo huyết áp Omron Hem-7121J tự động với công nghệ IntelliSense mang lại sự thoải mái cho người dùng. Nó báo OK khi quấn vòng bít đúng cách, đảm bảo áp suất phù hợp để cho kết quả chính xác, nhanh chóng. Dễ dàng theo dõi huyết áp tại nhà.', 'Omron Blood Pressure Monitor HEM-7121J, đo huyết áp', 'Blood Pressure.jpg', 49, 530000),
 (19, 'Máy xông mũi họng Omron Ne-C106', 'Omron', 'machine', 'Hít thở dễ dàng, thoải mái với máy xông mũi họng Omron Ne-C106 giúp bạn hít thuốc. Thiết kế dễ sử dụng cho cả người lớn và trẻ em.', 'Omron Compressor Nebulizer Ne-C106', 'Omron Compressor Nebulizer Ne-C106.jpeg', 50, 450000),
 (20, 'Máy đo đường huyết OneTouch Select Plus Simple (kèm 10 que thử + bút chích + 10 kim)', 'OneTouch', 'machine', 'OneTouch Select Plus Simple là hệ thống đo đường huyết dễ sử dụng, chính xác, gần như không đau. OneTouch® là thương hiệu được bác sĩ tiểu đường Việt Nam khuyên dùng nhiều nhất (theo khảo sát 2020 với 150 bác sĩ).', 'OneTouch Select Plus Simple Glucometer (kèm 10 que thử + bút chích + 10 kim)', 'OneTouch Select Plus Simple Glucometer.jpeg', 48, 265000),
-(21, 'Máy đo đường huyết Accu-Chek Active (kèm 10 que thử)', 'Accu-Chek', 'machine', 'Hệ thống đo đường huyết Accu-Chek Active cho kết quả chính xác tại nhà, dễ sử dụng, nhỏ gọn, nhanh có kết quả dễ hiểu.', 'Accu-Chek Active Blood Glucose Monitoring System With 10 Free Test Strips', 'Accu-Chek Active Blood Glucose Monitoring System.jpeg', 50, 400000),
+(21, 'Máy đo đường huyết Accu-Chek Active (kèm 10 que thử)', 'Accu-Chek', 'machine', 'Hệ thống đo đường huyết Accu-Chek Active cho kết quả chính xác tại nhà, dễ sử dụng, nhỏ gọn, nhanh có kết quả dễ hiểu.', 'Accu-Chek Active Blood Glucose Monitoring System With 10 Free Test Strips', 'Accu-Chek Active Blood Glucose Monitoring System.jpeg', 49, 400000),
 (22, 'Nhiệt kế điện tử mềm Apollo', 'Apollo', 'machine', 'Nhiệt kế Apollo phản hồi nhanh, độ chính xác cao (±0,2°F), màn hình LCD dễ đọc, pin lâu lên đến 200 giờ. Có tín hiệu báo khi đo xong, tự động tắt.', 'Apollo Pharmacy Digital Flexible Thermometer', 'Apollo Pharmacy Digital Flexible Thermometer.jpeg', 50, 30000),
 (23, 'Máy tập thở Romsons SH-6082', 'ROMSONS', 'machine', 'Máy tập thở Romsons Respirometer SH-6082 giúp tập luyện phổi hiệu quả với thiết kế 3 bóng, dễ cầm, vỏ trong suốt để theo dõi quá trình tập thở.', 'Romsons Respirometer SH-6082', 'Romsons Respirometer SH-6082.jpeg', 50, 85000),
 (24, 'Bộ thử thai Prega News', 'Prega', 'machine', 'Nhận kết quả thử thai chỉ sau 5 phút với bộ thử Prega News. Chỉ cần 3 giọt nước tiểu, dễ sử dụng và đọc kết quả ngay tại nhà.', 'Prega News Pregnancy Test Card', 'Prega News Pregnancy Test Card.jpeg', 48, 17000),
@@ -82,19 +83,19 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 (32, 'Xà phòng nghệ & gỗ đàn hương Patanjali - 75g', 'Patanjali', 'self-care', 'Xà phòng Patanjali haldi chandan cho mặt và cơ thể, chứa nghệ, gỗ đàn hương giúp trẻ hóa, nuôi dưỡng và làm sáng da.', 'Patanjali Haldi Chandan Kanti Body Cleanser Soap, 75 gm', 'Patanjali Haldi Chandan Kanti Body Cleanser Soap, 75 gm.jpeg', 50, 6000),
 (33, 'Dầu dưỡng da Sri Sri Tattva - 200ml', 'Sri Sri', 'self-care', 'Dầu dưỡng Sri Sri Tattva chứa thành phần tự nhiên và tinh dầu giúp nuôi dưỡng, phục hồi làn da hư tổn, cải thiện tình trạng da, làm mờ dấu hiệu lão hóa.', 'Sri Sri Tattva Body Oil, 200 ml', 'Sri Sri Tattva Body Oil, 200 ml.jpeg', 48, 39000),
 (34, 'Dầu gội Amla Jiva - 200ml', 'Jiva Amla', 'self-care', 'Dầu gội Jiva Amla giữ da đầu mát, ngăn rụng tóc, bạc sớm, gàu. Amla có tính chất Ayurvedic cân bằng Pitta, kết hợp các thảo dược khác cho tóc khỏe đẹp.', 'Jiva Amla Shampoo, 200 ml', 'Jiva Amla Shampoo, 200 ml.jpeg', 100, 52000),
-(35, 'Nước rửa tay Neem & Chanh Sri Sri - 300ml', 'Sri Sri', 'self-care', 'Nước rửa tay Sri Sri Tattva Neem & Lemon chứa Neem, Chanh, Ushira giúp diệt khuẩn, dưỡng ẩm, khử mùi, bảo vệ tay khỏi vi khuẩn nhưng vẫn dịu nhẹ cho da.', 'Sri Sri Tattva Neem & Lemon Flavoured Kleanup Handwash, 300 ml Pump Bottle', 'Sri Sri Tattva Neem & Lemon Flavoured Kleanup Handwash, 300 ml Pump Bottle.jpeg', 50, 36000),
+(35, 'Nước rửa tay Neem & Chanh Sri Sri - 300ml', 'Sri Sri', 'self-care', 'Nước rửa tay Sri Sri Tattva Neem & Lemon chứa Neem, Chanh, Ushira giúp diệt khuẩn, dưỡng ẩm, khử mùi, bảo vệ tay khỏi vi khuẩn nhưng vẫn dịu nhẹ cho da.', 'Sri Sri Tattva Neem & Lemon Flavoured Kleanup Handwash, 300 ml Pump Bottle', 'Sri Sri Tattva Neem & Lemon Flavoured Kleanup Handwash, 300 ml Pump Bottle.jpeg', 49, 36000),
 (36, 'Dung dịch rửa tay khô hoa hồng Sri Sri - 130ml', 'Sri Sri', 'self-care', 'Dung dịch rửa tay khô Sri Sri Tattva Swaccha hương hoa hồng chứa Neem, Nha đam, Ushira giúp diệt khuẩn hiệu quả, giữ tay mềm mại, thơm mát.', 'Sri Sri Tattva Swaccha Rose Flavoured Hand Sanitizer, 130 ml', 'Sri Sri Tattva Swaccha Rose Flavoured Hand Sanitizer, 130 ml.jpeg', 48, 20000),
 (37, 'Xịt khử mùi nam Kamasutra Urge - 150ml', 'Kamasutra', 'self-care', 'Xịt khử mùi Kamasutra với công thức quyến rũ giúp bạn nổi bật giữa đám đông.', 'Kamasutra Urge Men Deodorant Spray, 150 ml', 'Kamasutra Urge Men Deodorant Spray, 150 ml.jpeg', 49, 32000),
-(38, 'Si-rô tăng cường sức khỏe Himalaya Geriforte 200 ml', 'Himalaya', 'medicine', 'Các thành phần tự nhiên trong Geriforte phối hợp ngăn ngừa tổn thương oxy hóa do gốc tự do ở các cơ quan.', 'Himalaya Geriforte Syrup 200 ml', 'Himalaya Geriforte Syrup 200 ml.jpeg', 50, 38000),
+(38, 'Si-rô tăng cường sức khỏe Himalaya Geriforte 200 ml', 'Himalaya', 'medicine', 'Các thành phần tự nhiên trong Geriforte phối hợp ngăn ngừa tổn thương oxy hóa do gốc tự do ở các cơ quan.', 'Himalaya Geriforte Syrup 200 ml', 'Himalaya Geriforte Syrup 200 ml.jpeg', 49, 38000),
 (43, 'Bột trị đầy hơi Eno vị truyền thống 5g', 'Eno', 'medicine', 'Eno giúp trung hòa axit trong dạ dày, bắt đầu tác dụng chỉ sau 6 giây.', 'Eno Regular Flavoured Powder, 5 gm', 'Eno Regular Flavoured Powder, 5 gm.jpeg', 46, 6000),
 (44, 'Si-rô ho Benadryl 150 ml', 'Benadryl', 'medicine', 'Si-rô Benadryl điều trị ho, giảm các triệu chứng dị ứng như sổ mũi, nghẹt mũi, hắt hơi, chảy nước mắt.', 'Benadryl Cough Formula Syrup 150 ml', 'Benadryl Cough Formula Syrup 150 ml.jpeg', 50, 35000),
-(45, 'Thuốc cảm ho thảo dược Zinda Tilismath 5 ml', 'Zinda', 'medicine', 'Zinda Tilismath là thuốc thảo dược 100% điều trị các bệnh thông thường như cảm, ho.', 'Zinda Tilismath Unani Medicine, 5 ml', 'Zinda Tilismath Unani Medicine, 5 ml.jpeg', 50, 36000),
+(45, 'Thuốc cảm ho thảo dược Zinda Tilismath 5 ml', 'Zinda', 'medicine', 'Zinda Tilismath là thuốc thảo dược 100% điều trị các bệnh thông thường như cảm, ho.', 'Zinda Tilismath Unani Medicine, 5 ml', 'Zinda Tilismath Unani Medicine, 5 ml.jpeg', 49, 36000),
 (46, 'Si-rô chống ngáy Dee Snor 100 ml', 'Dee Snor', 'medicine', 'Dee Snor là si-rô chống ngáy giúp giảm ngáy, hỗ trợ giảm hen suyễn, 100% thảo dược, không tác dụng phụ.', 'Dee Snor Anti Snoring Syrup 100 ml', 'Dee Snor Anti Snoring Syrup 100 ml.jpeg', 47, 52000),
 (47, 'Viên uống hỗ trợ tuyến tiền liệt Himalaya Himplasia (30 viên)', 'Himalaya', 'medicine', 'Himplasia hỗ trợ sức khỏe tuyến tiền liệt, chức năng niệu sinh dục, bàng quang, sinh sản, là công thức thảo dược không chứa hormone.', 'Himalaya Himplasia, 30 Tablets', 'Himalaya Himplasia, 30 Tablets.jpeg', 47, 48000),
-(48, 'Viên uống lợi tiểu Himalaya Punarnava (60 viên)', 'Himalaya', 'medicine', 'Punarnava hỗ trợ hệ tiết niệu, bảo vệ thận, làm dịu đường tiết niệu.', 'Himalaya Punarnava, 60 Capsules', 'Himalaya Punarnava, 60 Capsules.jpeg', 49, 46000),
+(48, 'Viên uống lợi tiểu Himalaya Punarnava (60 viên)', 'Himalaya', 'medicine', 'Punarnava hỗ trợ hệ tiết niệu, bảo vệ thận, làm dịu đường tiết niệu.', 'Himalaya Punarnava, 60 Capsules', 'Himalaya Punarnava, 60 Capsules.jpeg', 47, 46000),
 (49, 'Viên hỗ trợ tiểu đường Himalaya Diabecon DS (60 viên)', 'Himalaya', 'medicine', 'Diabecon DS hỗ trợ quản lý tiểu đường, là công thức Ayurvedic chứa các thành phần như Gymnema, shilajeet.', 'Himalaya Diabecon DS ,60 Tablets', 'Himalaya Diabecon DS ,60 Tablets.jpeg', 48, 46000),
 (50, 'Bộ xét nghiệm nhanh COVID-19 Mylab CoviSelf', 'Mylab', 'machine', 'Bộ xét nghiệm nhanh COVID-19 Mylab CoviSelf giúp bạn tự kiểm tra an toàn, dễ dàng tại nhà chỉ trong 15 phút.', 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit', 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit.jpeg', 50, 138000),
-(51, 'Viên nhai bổ sung Vitamin C Limcee 500 mg hương cam (15 viên)', 'ABBOTT', 'medicine', 'Limcee Vitamin C 500 mg cam nhai, bổ sung vitamin C, ngăn ngừa và điều trị thiếu hụt dinh dưỡng, hỗ trợ phát triển cơ thể.', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets.jpeg', 49, 6000),
+(51, 'Viên nhai bổ sung Vitamin C Limcee 500 mg hương cam (15 viên)', 'ABBOTT', 'medicine', 'Limcee Vitamin C 500 mg cam nhai, bổ sung vitamin C, ngăn ngừa và điều trị thiếu hụt dinh dưỡng, hỗ trợ phát triển cơ thể.', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets.jpeg', 48, 6000),
 (52, 'Viên uống hỗ trợ giảm cân GNC L-Carnitine 500 mg (60 viên)', 'PRO', 'medicine', 'GNC L-Carnitine 500 mg giúp giảm cân, phục hồi cơ bắp, tăng trưởng cơ bắp với liều thiết yếu mỗi ngày.', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules.jpeg', 60, 320000);
 
 -- --------------------------------------------------------
@@ -117,11 +118,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order_date`, `order_status`) VALUES
-(227, 43, 55, 1, '2025-07-07', 1),
-(228, 43, 55, 1, '2025-07-07', 0),
-(229, 46, 55, 1, '2025-07-07', 0),
-(230, 48, 55, 1, '2025-07-07', 0),
-(231, 46, 55, 1, '2025-07-07', 0);
+(238, 48, 55, 1, '2025-07-09', 1);
 
 -- --------------------------------------------------------
 
@@ -130,9 +127,9 @@ INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order
 --
 
 CREATE TABLE `user` (
-  `user_Lname` varchar(20) NOT NULL,
+  `user_lname` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `user_password` varchar(50) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
   `user_id` int(3) NOT NULL,
   `user_fname` varchar(20) NOT NULL,
   `user_address` text NOT NULL
@@ -142,8 +139,9 @@ CREATE TABLE `user` (
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`user_Lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
-('user', 'user@gmail.com', 'user', 55, 'user', 'Phu An-Duc Hiep-Mo Duc-Quang Ngai');
+INSERT INTO `user` (`user_lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
+('Nguyen', 'user@gmail.com', '$2y$10$Awb6W8qLz.AjCsM5Wo2Q8uujiGHiUmKhOuexERVtf1mnivVh7Zwim', 55, 'Tai', 'Phú an - Đức Hiệp - Mộ Đức - Quảng Ngãi'),
+('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$KcXYehQLNTy1FNz68b5opezcT.5qxivGxF6tNJ9Ewvag2NfRL/4Ha', 94, 'Tài', 'quảng ngãi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -183,25 +181,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `admin_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
