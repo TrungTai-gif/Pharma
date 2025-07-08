@@ -46,22 +46,28 @@ function single_query($query)
         die("no data" . mysqli_connect_error($connection));
     }
 }
+
 function login()
 {
     if (isset($_POST['login'])) {
-
         $userEmail = trim(strtolower($_POST['userEmail']));
         $password = trim($_POST['password']);
-        if (empty($userEmail) or empty($password)) {
+
+        if (empty($userEmail) || empty($password)) {
             $_SESSION['message'] = "empty_err";
             post_redirect("login.php");
         }
-        $query = "SELECT  email , user_id , user_password FROM user WHERE email= '$userEmail' ";
+
+        $query = "SELECT email, user_id, user_password FROM user WHERE email = '$userEmail'";
         $data = query($query);
+
         if (empty($data)) {
             $_SESSION['message'] = "loginErr";
             post_redirect("login.php");
-        } elseif ($password == $data[0]['user_password'] and  $userEmail == $data[0]['email']) {
+        }
+
+        // ✅ So sánh mật khẩu đã hash
+        if (password_verify($password, $data[0]['user_password'])) {
             $_SESSION['user_id'] = $data[0]['user_id'];
             post_redirect("index.php");
         } else {
@@ -71,16 +77,18 @@ function login()
     }
 }
 
+
+
 function singUp()
 {
     if (isset($_POST['singUp'])) {
         $email  = trim(strtolower($_POST['email']));
-        
         $fname  = trim($_POST['Fname']);
         $lname = trim($_POST['Lname']);
         $address = trim($_POST['address']);
         $passwd = trim($_POST['passwd']);
-        if (empty($email) or empty($passwd) or empty($address) or empty($fname) or empty($lname)) {
+
+        if (empty($email) || empty($passwd) || empty($address) || empty($fname) || empty($lname)) {
             $_SESSION['message'] = "empty_err";
             post_redirect("signUp.php");
         } elseif (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) {
@@ -90,20 +98,27 @@ function singUp()
             $_SESSION['message'] = "signup_err_password";
             post_redirect("signUp.php");
         }
-        $query = "SELECT email FROM user ";
+
+        $query = "SELECT email FROM user";
         $data = query($query);
-        $count = sizeof($data);
-        for ($i = 0; $i < $count; $i++) {
-            if ($email == $data[$i]['email']) {
+        foreach ($data as $user) {
+            if ($email == $user['email']) {
                 $_SESSION['message'] = "usedEmail";
                 post_redirect("signUp.php");
             }
         }
-        $query = "INSERT INTO user (email ,user_fname ,user_lname , user_address,user_password ) VALUES('$email', '$fname' ,'$lname','$address' ,'$passwd')";
+
+        // ✅ Mã hóa mật khẩu
+        $hashedPasswd = password_hash($passwd, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO user (email, user_fname, user_lname, user_address, user_password) 
+                  VALUES ('$email', '$fname', '$lname', '$address', '$hashedPasswd')";
         $queryStatus = single_query($query);
-        $query = "SELECT user_id FROM user WHERE email='$email' ";
+
+        $query = "SELECT user_id FROM user WHERE email='$email'";
         $data = query($query);
         $_SESSION['user_id'] = $data[0]['user_id'];
+
         if ($queryStatus == "done") {
             post_redirect("index.php");
         } else {
@@ -112,6 +127,7 @@ function singUp()
         }
     }
 }
+
 function message()
 {
     if(isset($_SESSION['message'])){
