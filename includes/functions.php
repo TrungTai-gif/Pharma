@@ -163,6 +163,16 @@ function message()
         please enter the email in the correct form !!!
       </div>";
             unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "reset_sent") {
+            echo "<div class='alert alert-success' style='position: fixed; top: 20px; right: 20px; z-index: 9999;' role='alert'>
+                ✅ Liên kết đặt lại mật khẩu đã được gửi tới email của bạn!
+            </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "email_not_found") {
+            echo "<div class='alert alert-danger' style='position: fixed; top: 20px; right: 20px; z-index: 9999;' role='alert'>
+                ❌ Email không hợp lệ!
+            </div>";
+            unset($_SESSION['message']);
         }
     }
 }
