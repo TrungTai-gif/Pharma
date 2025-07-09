@@ -14,23 +14,33 @@ document.addEventListener("DOMContentLoaded", async () => {
   const monthLabels = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"];
 
   // Đơn hàng theo tháng
-  new Chart(document.getElementById("ordersChart"), {
-    type: "bar",
-    data: {
-      labels: monthLabels,
-      datasets: [{
-        label: "Đơn hàng",
-        data: fillMonths(data.orders_per_month),
-        backgroundColor: "rgba(54, 162, 235, 0.6)"
-      }]
+new Chart(document.getElementById("ordersChart"), {
+  type: "bar",
+  data: {
+    labels: monthLabels,
+    datasets: [{
+      label: "Đơn hàng",
+      data: fillMonths(data.orders_per_month),
+      backgroundColor: "rgba(54, 162, 235, 0.6)"
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false }
     },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false }
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          precision: 0,
+          stepSize: 1
+        }
       }
     }
-  });
+  }
+});
+
 
   // Doanh thu
   new Chart(document.getElementById("revenueChart"), {
