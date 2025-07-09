@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 09, 2025 lúc 12:52 PM
+-- Thời gian đã tạo: Th7 09, 2025 lúc 01:17 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -42,6 +42,26 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_fname`, `admin_lname`, `admin_password`) VALUES
 (16, 'nguyentai2292005@gmail.com', 'Tai', 'Nguyen', '$2y$10$YRiUFQoJR.EMOCsfxEdr6uLY6Fvbi0tdIFV1T/eIhi5N0Poil4ndG'),
 (17, 'admin@gmail.com', 'Tai', 'Nguyen', '$2y$10$fHl24Lx9cOzO7DaCZkOdXeFglneJnuc8ItlO3kmfjYiKTnEbJDIoa');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `admin_password_resets`
+--
+
+CREATE TABLE `admin_password_resets` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expires` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin_password_resets`
+--
+
+INSERT INTO `admin_password_resets` (`id`, `email`, `token`, `expires`) VALUES
+(6, 'nguyentai2292005@gmail.com', '23ceb6bd51b17ffe2b7d8cbdacfec3fe9d4968a7783f5eb6e7a292defe82bd3f', '2025-07-09 13:38:53');
 
 -- --------------------------------------------------------
 
@@ -123,6 +143,28 @@ INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expires` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `email`, `token`, `expires`) VALUES
+(17, 'nguyentai229@gmail.com', 'bd4366c2ce360d861293146e38077d904a83759fb195376baae7d31e76fb21d3', '2025-07-09 13:42:11'),
+(18, 'nguyentai2292005@gmail.com', 'ae006e60e668554773088a000c5164cb558d2a2a7cc82c57e74fbc4d5a6b05b6', '2025-07-09 13:49:56'),
+(20, 'taint1272@ut.edu.vn', '4fcbed3f6d7c5b643ef9489c4ac87d2bd0cda6e38a6b07c110ba3036b3e37388', '2025-07-09 14:05:56');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `user`
 --
 
@@ -141,7 +183,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
 ('Nguyen', 'user@gmail.com', '$2y$10$Awb6W8qLz.AjCsM5Wo2Q8uujiGHiUmKhOuexERVtf1mnivVh7Zwim', 55, 'Tai', 'Phú an - Đức Hiệp - Mộ Đức - Quảng Ngãi'),
-('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$EW3knMmy1lAoopyC/AtQzenQIXOWjxVgFCVT7ztSid4UHJ98TBohW', 94, 'Tài', 'quảng ngãi');
+('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$EW3knMmy1lAoopyC/AtQzenQIXOWjxVgFCVT7ztSid4UHJ98TBohW', 94, 'Tài', 'quảng ngãi'),
+('Nguyen', 'taint1272@ut.edu.vn', '$2y$10$nCybwu1JlASsFy5fdEl4Ke78fUPosVyMTKkXhaZYc..Zi6xuobEhS', 96, 'Tai', 'quảng ngãi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -152,6 +195,12 @@ INSERT INTO `user` (`user_lname`, `email`, `user_password`, `user_id`, `user_fna
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Chỉ mục cho bảng `admin_password_resets`
+--
+ALTER TABLE `admin_password_resets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `item`
@@ -166,6 +215,12 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `user`
@@ -184,6 +239,12 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT cho bảng `admin_password_resets`
+--
+ALTER TABLE `admin_password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `item`
 --
 ALTER TABLE `item`
@@ -196,10 +257,16 @@ ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
+-- AUTO_INCREMENT cho bảng `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
