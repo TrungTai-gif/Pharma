@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 08, 2025 lúc 11:41 PM
+-- Thời gian đã tạo: Th7 09, 2025 lúc 12:52 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_fname`, `admin_lname`, `admin_password`) VALUES
-(16, 'nguyentai2292005@gmail.com', 'Tai', 'Nguyen', '$2y$10$8D/TskqbFxZCYOI/Yc.VQOIJspja1BAfC4IB1UuEGiEDiJwAvQm2.'),
+(16, 'nguyentai2292005@gmail.com', 'Tai', 'Nguyen', '$2y$10$YRiUFQoJR.EMOCsfxEdr6uLY6Fvbi0tdIFV1T/eIhi5N0Poil4ndG'),
 (17, 'admin@gmail.com', 'Tai', 'Nguyen', '$2y$10$fHl24Lx9cOzO7DaCZkOdXeFglneJnuc8ItlO3kmfjYiKTnEbJDIoa');
 
 -- --------------------------------------------------------
@@ -141,7 +141,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
 ('Nguyen', 'user@gmail.com', '$2y$10$Awb6W8qLz.AjCsM5Wo2Q8uujiGHiUmKhOuexERVtf1mnivVh7Zwim', 55, 'Tai', 'Phú an - Đức Hiệp - Mộ Đức - Quảng Ngãi'),
-('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$KcXYehQLNTy1FNz68b5opezcT.5qxivGxF6tNJ9Ewvag2NfRL/4Ha', 94, 'Tài', 'quảng ngãi');
+('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$EW3knMmy1lAoopyC/AtQzenQIXOWjxVgFCVT7ztSid4UHJ98TBohW', 94, 'Tài', 'quảng ngãi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
