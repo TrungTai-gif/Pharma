@@ -1,53 +1,55 @@
-/* globals Chart:false, feather:false */
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await fetch("api/dashboard_data.php");
+  const data = await res.json();
 
-(function () {
-  'use strict'
+  // Helper to convert dữ liệu sang 12 tháng
+  const fillMonths = (obj) => {
+    const filled = [];
+    for (let i = 1; i <= 12; i++) {
+      filled.push(obj[i] || 0);
+    }
+    return filled;
+  };
 
-  feather.replace({ 'aria-hidden': 'true' })
+  const monthLabels = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"];
 
-  // Biểu đồ
-  var ctx = document.getElementById('myChart')
-  // eslint-disable-next-line no-unused-vars
-  var myChart = new Chart(ctx, {
-    type: 'line',
+  // Đơn hàng theo tháng
+  new Chart(document.getElementById("ordersChart"), {
+    type: "bar",
     data: {
-      labels: [
-        'Chủ nhật',
-        'Thứ hai',
-        'Thứ ba',
-        'Thứ tư',
-        'Thứ năm',
-        'Thứ sáu',
-        'Thứ bảy'
-      ],
+      labels: monthLabels,
       datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+        label: "Đơn hàng",
+        data: fillMonths(data.orders_per_month),
+        backgroundColor: "rgba(54, 162, 235, 0.6)"
       }]
     },
     options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
+      responsive: true,
+      plugins: {
+        legend: { display: false }
       }
     }
-  })
-})()
+  });
+
+  // Doanh thu
+  new Chart(document.getElementById("revenueChart"), {
+    type: "line",
+    data: {
+      labels: monthLabels,
+      datasets: [{
+        label: "Doanh thu (VNĐ)",
+        data: fillMonths(data.revenue_per_month),
+        borderColor: "rgba(153, 102, 255, 1)",
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" }
+      }
+    }
+  });
+});
