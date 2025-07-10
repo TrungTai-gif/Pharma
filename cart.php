@@ -123,8 +123,8 @@ include "includes/head.php"
   } else {
   ?>
     <h1 style="text-align: center; color:black;">Giỏ hàng của bạn đang trống</h1>
-    <img style="width:46rem; margin-left: 330px; margin-bottom:20px;" src="images/nocart.png" alt="">
-  <?php
+    <img src="images/nocart.png" alt="Giỏ hàng trống" style="width:100%; max-width:400px; display:block; margin: 20px auto;">
+    <?php
   }
   include "includes/footer.php"
   ?>

@@ -33,7 +33,9 @@ include "includes/head.php";
                 <div class="p-3 p-lg-5 border">
                   <table class="table site-block-order-table mb-5">
                     <thead>
-                      <th>Thông tin khách hàng</th>
+                      <tr>
+                        <th colspan="2" style="text-align:center;">Thông tin khách hàng</th>
+                      </tr>
                     </thead>
                     <tbody>
                       <tr>
@@ -99,7 +101,8 @@ include "includes/head.php";
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Tổng cộng</strong></td>
                         <td class="text-black font-weight-bold">
-                          <strong><?php echo delivery_fees($data) + total_price($data) ?> VND</strong></td>
+                          <strong><?php echo delivery_fees($data) + total_price($data) ?> VND</strong>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
