@@ -1,5 +1,6 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "Pharma");
+mysqli_set_charset($connection, "utf8mb4");
 // $connection = mysqli_connect("localhost", "id18666014_pharma1", "tXU!y/6D\EH_{<[6", "id18666014_pharma");
 // query functions (start)
 function query($query)
@@ -150,7 +151,7 @@ function edit_user($id)
             get_redirect("customers.php");
             return;
         }
-        $check = check_email_user($email);
+        $check = check_email_user($email, $id);
         if ($check == 0) {
             $query = "UPDATE user SET email='$email' ,user_fname='$fname' ,user_lname='$lname' ,user_address='$address' WHERE user_id= '$id'";
             single_query($query);
@@ -169,16 +170,16 @@ function get_user($id)
     $data = query($query);
     return $data;
 }
-function check_email_user($email)
+function check_email_user($email, $exclude_id = null)
 {
     $query = "SELECT email FROM user WHERE email='$email'";
-    $data = query($query);
-    if ($data) {
-        return 1;
-    } else {
-        return 0;
+    if ($exclude_id !== null) {
+        $query .= " AND user_id != '$exclude_id'";
     }
+    $data = query($query);
+    return $data ? 1 : 0;
 }
+
 function search_user()
 {
     if (isset($_GET['search_user'])) {
@@ -229,25 +230,51 @@ function edit_item($id)
         $brand = trim($_POST['brand']);
         $cat = trim($_POST['cat']);
         $tags = trim($_POST['tags']);
-        $image = trim($_POST['image']);
         $quantity = trim($_POST['quantity']);
         $price = trim($_POST['price']);
         $details = trim($_POST['details']);
-        $check = check_name($name);
-        if ($check == 0) {
-            $query = "UPDATE item SET item_title='$name' ,item_brand='$brand' ,item_cat='$cat' ,
-            item_details='$details',item_tags='$tags' 
-            ,item_image='$image' ,item_quantity='$quantity' ,item_price='$price'  WHERE item_id= '$id'";
-            $run = single_query($query);
-            get_redirect("products.php");
+
+        // ✅ Lấy ảnh mới nếu có upload
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+            $imageName = basename($_FILES['image']['name']);
+            $imageTmp = $_FILES['image']['tmp_name'];
+            $uploadPath = '../images/' . $imageName;
+            move_uploaded_file($imageTmp, $uploadPath);
         } else {
-            $_SESSION['message'] = "itemErr";
-            get_redirect("products.php");
+            // Nếu không upload ảnh mới, giữ ảnh cũ
+            $old = get_item($id);
+            $imageName = $old[0]['item_image'];
         }
+
+        // ✅ Kiểm tra rỗng
+        if (
+            empty($name) || empty($brand) || empty($cat) ||
+            empty($tags) || empty($quantity) || empty($price) || empty($details)
+        ) {
+            $_SESSION['message'] = "empty_err";
+            get_redirect("products.php");
+            return;
+        }
+
+        // ✅ Không cần check tên trùng khi sửa cùng sản phẩm
+        $query = "UPDATE item SET 
+            item_title='$name',
+            item_brand='$brand',
+            item_cat='$cat',
+            item_details='$details',
+            item_tags='$tags',
+            item_image='$imageName',
+            item_quantity='$quantity',
+            item_price='$price'
+            WHERE item_id='$id'";
+        single_query($query);
+        get_redirect("products.php");
+
     } elseif (isset($_POST['cancel'])) {
         get_redirect("products.php");
     }
 }
+
 function get_item($id)
 {
     $query = "SELECT * FROM item WHERE item_id=$id";
@@ -285,24 +312,38 @@ function add_item()
         $brand = trim($_POST['brand']);
         $cat = trim($_POST['cat']);
         $tags = trim($_POST['tags']);
-        $image = trim($_POST['image']);
         $quantity = trim($_POST['quantity']);
         $price = trim($_POST['price']);
         $details = trim($_POST['details']);
-        $check = check_name($name);
+
+        // ✅ Kiểm tra ảnh
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+            $imageName = basename($_FILES['image']['name']);
+            $imageTmp = $_FILES['image']['tmp_name'];
+            $uploadPath = '../images/' . $imageName;
+
+            move_uploaded_file($imageTmp, $uploadPath);
+        } else {
+            $imageName = ''; // Không có ảnh
+        }
+
+        // ✅ Kiểm tra rỗng
         if (
-            empty($name) or empty($brand) or empty($cat) or
-            empty($tags) or empty($image) or empty($quantity) or empty($price) or empty($details)
+            empty($name) || empty($brand) || empty($cat) ||
+            empty($tags) || empty($imageName) || empty($quantity) ||
+            empty($price) || empty($details)
         ) {
             $_SESSION['message'] = "empty_err";
             get_redirect("products.php");
             return;
         }
-        if ($check == 0) {
-            $query = "INSERT INTO item (item_title, item_brand, item_cat, item_details  ,
-            item_tags ,item_image ,item_quantity ,item_price) VALUES
-            ('$name' ,'$brand' ,'$cat' ,'$details' ,'$tags' ,'$image' ,'$quantity' ,'$price')";
-            $run = single_query($query);
+
+        // ✅ Trùng tên
+        if (check_name($name) == 0) {
+            $query = "INSERT INTO item (item_title, item_brand, item_cat, item_details,
+                item_tags, item_image, item_quantity, item_price) VALUES
+                ('$name', '$brand', '$cat', '$details', '$tags', '$imageName', '$quantity', '$price')";
+            single_query($query);
             get_redirect("products.php");
         } else {
             $_SESSION['message'] = "itemErr";
@@ -312,6 +353,7 @@ function add_item()
         get_redirect("products.php");
     }
 }
+
 function get_item_details()
 {
     if ($_GET['id']) {
@@ -343,7 +385,7 @@ function edit_admin($id)
         $email = trim(strtolower($_POST['admin_email']));
         $password = trim($_POST['admin_password']);
 
-        $check = check_email_admin($email);
+        $check = check_email_admin($email, $id);
 
         if ($check == 0) {
             // ✅ Mã hóa mật khẩu trước khi lưu
@@ -367,16 +409,16 @@ function edit_admin($id)
     }
 }
 
-function check_email_admin($email)
+function check_email_admin($email, $exclude_id = null)
 {
     $query = "SELECT admin_email FROM admin WHERE admin_email='$email'";
-    $data = query($query);
-    if ($data) {
-        return $data;
-    } else {
-        return 0;
+    if ($exclude_id !== null) {
+        $query .= " AND admin_id != '$exclude_id'";
     }
+    $data = query($query);
+    return $data ? 1 : 0;
 }
+
 function add_admin()
 {
     if (isset($_POST['add_admin'])) {

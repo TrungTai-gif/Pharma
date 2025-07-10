@@ -43,8 +43,8 @@ include "includes/head.php";
             ?>
             <br>
             <h2>Chỉnh sửa sản phẩm</h2>
-            <form action="products.php" method="POST">
-                <div class="form-group mb-3">
+            <form action="products.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-3">
                     <label>Tên sản phẩm</label>
                     <input pattern="[A-Za-z0-9_]{1,25}" type="text" class="form-control"
                         placeholder="<?php echo $data[0]['item_title'] ?>" name="name">
@@ -107,8 +107,8 @@ include "includes/head.php";
         if (isset($_GET['add'])) { ?>
             <br>
             <h2>Thêm sản phẩm</h2>
-            <form action="products.php" method="POST">
-                <div class="form-group mb-3">
+            <form action="products.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-3">
                     <label>Tên sản phẩm</label>
                     <input type="text" class="form-control" placeholder="Tên sản phẩm" name="name">
                     <div class="form-text">Vui lòng nhập tên sản phẩm (1-25 ký tự), không chứa ký tự đặc biệt!</div>

@@ -51,7 +51,7 @@ include "includes/head.php";
             <form action="customers.php" method="POST">
                 <div class="form-group">
                     <label>Tên</label>
-                    <input pattern="[A-Za-z_]{1,15}" type="text" class="form-control"
+                    <input pattern=".{1,30}" type="text" class="form-control"
                         placeholder="<?php echo $data[0]['user_fname'] ?>" name="fname">
                     <div class="form-text">Vui lòng nhập tên trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc
                         số!</div>
@@ -59,7 +59,7 @@ include "includes/head.php";
                 <br>
                 <div class="form-group">
                     <label for="validationTooltip01">Họ</label>
-                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control"
+                    <input pattern=".{1,30}" id="validationTooltip01" type="text" class="form-control"
                         placeholder="<?php echo $data[0]['user_lname'] ?>" name="lname">
                     <div class="form-text">Vui lòng nhập họ trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc số!
                     </div>
@@ -134,8 +134,8 @@ include "includes/head.php";
                                     class="btn btn-sm btn-outline-warning">Sửa</a>
                             </td>
                             <td>
-                            <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger"
-   onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
+                                <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
 
                             </td>
                         </tr>
@@ -155,7 +155,7 @@ include "includes/head.php";
                     <div class="mt-2 d-flex gap-2 flex-wrap">
                         <a href="customers.php?edit=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-warning">Sửa</a>
                         <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger"
-   onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -50,15 +50,15 @@ include "includes/head.php";
             <form action="admin.php" method="POST">
                 <div class="form-group">
                     <label>Tên</label>
-                    <input pattern="[A-Za-z_]{1,15}" type="text" class="form-control"
-                        placeholder="<?php echo $data[0]['admin_fname'] ?>" name="admin_fname">
+                    <input pattern="\S.{0,29}" type="text" class="form-control"
+                    placeholder="<?php echo $data[0]['admin_fname'] ?>" name="admin_fname">
                     <div class="form-text">Vui lòng nhập tên trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc
                         số!</div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="validationTooltip01">Họ</label>
-                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control"
+                    <input pattern=".{1,30}" id="validationTooltip01" type="text" class="form-control"
                         placeholder="<?php echo $data[0]['admin_lname'] ?>" name="admin_lname">
                     <div class="form-text">Vui lòng nhập họ trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc số!
                     </div>
@@ -99,14 +99,14 @@ include "includes/head.php";
             <form action="admin.php" method="POST">
                 <div class="form-group">
                     <label>Tên</label>
-                    <input pattern="[A-Za-z_]{1,15}" type="text" class="form-control" placeholder="Tên" name="admin_fname">
+                    <input pattern=".{1,30}" type="text" class="form-control" placeholder="Tên" name="admin_fname">
                     <div class="form-text">Vui lòng nhập tên trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc
                         số!</div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="validationTooltip01">Họ</label>
-                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control"
+                    <input pattern=".{1,30}" id="validationTooltip01" type="text" class="form-control"
                         placeholder="Họ" name="admin_lname">
                     <div class="form-text">Vui lòng nhập họ trong khoảng 1-30 ký tự, không được chứa ký tự đặc biệt hoặc số!
                     </div>
