@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 09, 2025 lúc 02:14 PM
+-- Thời gian đã tạo: Th7 11, 2025 lúc 01:33 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
   `admin_fname` varchar(20) NOT NULL,
   `admin_lname` varchar(20) NOT NULL,
   `admin_password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admin`
@@ -54,14 +54,14 @@ CREATE TABLE `admin_password_resets` (
   `email` varchar(50) NOT NULL,
   `token` varchar(255) NOT NULL,
   `expires` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admin_password_resets`
 --
 
 INSERT INTO `admin_password_resets` (`id`, `email`, `token`, `expires`) VALUES
-(6, 'nguyentai2292005@gmail.com', '23ceb6bd51b17ffe2b7d8cbdacfec3fe9d4968a7783f5eb6e7a292defe82bd3f', '2025-07-09 13:38:53');
+(7, 'nguyentai2292005@gmail.com', 'aefb59a678c82f122980a526628f8909b6303f54af24cd975d491e216c173f71', '2025-07-10 22:58:26');
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE `item` (
   `item_image` varchar(250) NOT NULL,
   `item_quantity` int(3) NOT NULL,
   `item_price` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `item`
@@ -91,7 +91,7 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 (19, 'Máy xông mũi họng Omron Ne-C106', 'Omron', 'machine', 'Hít thở dễ dàng, thoải mái với máy xông mũi họng Omron Ne-C106 giúp bạn hít thuốc. Thiết kế dễ sử dụng cho cả người lớn và trẻ em.', 'Omron Compressor Nebulizer Ne-C106', 'Omron Compressor Nebulizer Ne-C106.jpeg', 49, 450000),
 (20, 'Máy đo đường huyết OneTouch Select Plus Simple (kèm 10 que thử + bút chích + 10 kim)', 'OneTouch', 'machine', 'OneTouch Select Plus Simple là hệ thống đo đường huyết dễ sử dụng, chính xác, gần như không đau. OneTouch® là thương hiệu được bác sĩ tiểu đường Việt Nam khuyên dùng nhiều nhất (theo khảo sát 2020 với 150 bác sĩ).', 'OneTouch Select Plus Simple Glucometer (kèm 10 que thử + bút chích + 10 kim)', 'OneTouch Select Plus Simple Glucometer.jpeg', 48, 265000),
 (21, 'Máy đo đường huyết Accu-Chek Active (kèm 10 que thử)', 'Accu-Chek', 'machine', 'Hệ thống đo đường huyết Accu-Chek Active cho kết quả chính xác tại nhà, dễ sử dụng, nhỏ gọn, nhanh có kết quả dễ hiểu.', 'Accu-Chek Active Blood Glucose Monitoring System With 10 Free Test Strips', 'Accu-Chek Active Blood Glucose Monitoring System.jpeg', 49, 400000),
-(22, 'Nhiệt kế điện tử mềm Apollo', 'Apollo', 'machine', 'Nhiệt kế Apollo phản hồi nhanh, độ chính xác cao (±0,2°F), màn hình LCD dễ đọc, pin lâu lên đến 200 giờ. Có tín hiệu báo khi đo xong, tự động tắt.', 'Apollo Pharmacy Digital Flexible Thermometer', 'Apollo Pharmacy Digital Flexible Thermometer.jpeg', 50, 30000),
+(22, 'Nhiệt kế điện tử mềm Apollo', 'Apollo', 'machine', 'Nhiệt kế Apollo phản hồi nhanh, độ chính xác cao (±0,2°F), màn hình LCD dễ đọc, pin lâu lên đến 200 giờ. Có tín hiệu báo khi đo xong, tự động tắt.', 'Apollo Pharmacy Digital Flexible Thermometer', 'Apollo Pharmacy Digital Flexible Thermometer.jpeg', 49, 30000),
 (23, 'Máy tập thở Romsons SH-6082', 'ROMSONS', 'machine', 'Máy tập thở Romsons Respirometer SH-6082 giúp tập luyện phổi hiệu quả với thiết kế 3 bóng, dễ cầm, vỏ trong suốt để theo dõi quá trình tập thở.', 'Romsons Respirometer SH-6082', 'Romsons Respirometer SH-6082.jpeg', 50, 85000),
 (24, 'Bộ thử thai Prega News', 'Prega', 'machine', 'Nhận kết quả thử thai chỉ sau 5 phút với bộ thử Prega News. Chỉ cần 3 giọt nước tiểu, dễ sử dụng và đọc kết quả ngay tại nhà.', 'Prega News Pregnancy Test Card', 'Prega News Pregnancy Test Card.jpeg', 48, 17000),
 (26, 'Máy đo nồng độ oxy Polymed CMS50C', 'Polymed', 'machine', 'Máy đo nồng độ oxy Polymed CMS50C giúp bạn dễ dàng theo dõi chỉ số SpO2 và nhịp tim tại nhà.', 'Polymed Pulse Oximeter CMS50C', 'Polymed Pulse Oximeter CMS50C.jpeg', 49, 225000),
@@ -131,7 +131,7 @@ CREATE TABLE `orders` (
   `order_quantity` int(3) NOT NULL,
   `order_date` date NOT NULL,
   `order_status` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `orders`
@@ -143,7 +143,8 @@ INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order
 (240, 19, 94, 1, '2025-05-09', 0),
 (241, 33, 94, 1, '2025-06-09', 0),
 (242, 45, 94, 1, '2025-07-09', 0),
-(243, 18, 94, 1, '2025-07-09', 0);
+(243, 18, 94, 1, '2025-07-09', 0),
+(244, 22, 94, 1, '2025-07-11', 0);
 
 -- --------------------------------------------------------
 
@@ -164,8 +165,8 @@ CREATE TABLE `password_resets` (
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `expires`) VALUES
 (17, 'nguyentai229@gmail.com', 'bd4366c2ce360d861293146e38077d904a83759fb195376baae7d31e76fb21d3', '2025-07-09 13:42:11'),
-(18, 'nguyentai2292005@gmail.com', 'ae006e60e668554773088a000c5164cb558d2a2a7cc82c57e74fbc4d5a6b05b6', '2025-07-09 13:49:56'),
-(20, 'taint1272@ut.edu.vn', '4fcbed3f6d7c5b643ef9489c4ac87d2bd0cda6e38a6b07c110ba3036b3e37388', '2025-07-09 14:05:56');
+(20, 'taint1272@ut.edu.vn', '4fcbed3f6d7c5b643ef9489c4ac87d2bd0cda6e38a6b07c110ba3036b3e37388', '2025-07-09 14:05:56'),
+(22, 'nguyentai2292005@gmail.com', '56722d7b3e7b2b0f941d35039e0e34fddb46d145947fe6908b17c39402471855', '2025-07-10 22:56:26');
 
 -- --------------------------------------------------------
 
@@ -180,16 +181,15 @@ CREATE TABLE `user` (
   `user_id` int(3) NOT NULL,
   `user_fname` varchar(20) NOT NULL,
   `user_address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`user_lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
-('Nguyen', 'user@gmail.com', '$2y$10$Awb6W8qLz.AjCsM5Wo2Q8uujiGHiUmKhOuexERVtf1mnivVh7Zwim', 55, 'Tai', 'Phú an - Đức Hiệp - Mộ Đức - Quảng Ngãi'),
-('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$EW3knMmy1lAoopyC/AtQzenQIXOWjxVgFCVT7ztSid4UHJ98TBohW', 94, 'Tài', 'quảng ngãi'),
-('Nguyen', 'taint1272@ut.edu.vn', '$2y$10$nCybwu1JlASsFy5fdEl4Ke78fUPosVyMTKkXhaZYc..Zi6xuobEhS', 96, 'Tai', 'quảng ngãi');
+('Nguyễn', 'user@gmail.com', '$2y$10$Awb6W8qLz.AjCsM5Wo2Q8uujiGHiUmKhOuexERVtf1mnivVh7Zwim', 55, 'Tài', 'quảng ngãi'),
+('Nguyễn', 'nguyentai2292005@gmail.com', '$2y$10$isBxwC08l9KqdQl7E2DrgOD8AmutXyvo.flKdyaJZUK5Yf6hJMzRW', 94, 'Tài', 'quảng ngãi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -247,25 +247,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `admin_password_resets`
 --
 ALTER TABLE `admin_password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
