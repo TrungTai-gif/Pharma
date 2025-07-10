@@ -26,7 +26,7 @@ include "includes/head.php"
             $num = sizeof($data);
             for ($i = 0; $i < $num; $i++) {
           ?>
-              <div class="col-sm-6 col-lg-4 text-center item mb-4">
+              <div class="col-4 text-center item mb-4">
                 <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>">
                   <img class="rounded mx-auto d-block" style="width:270px ; height:270px ;" src="images/<?php echo $data[$i]['item_image'] ?>" alt="Hình ảnh">
                 </a>
@@ -55,7 +55,7 @@ include "includes/head.php"
               <?php
               for ($i = 0; $i < $num; $i++) {
               ?>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                <div class="col-4 text-center item mb-4">
                   <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>">
                     <img class="rounded mx-auto d-block" style="width:270px ; height:270px ;" src="images/<?php echo $data[$i]['item_image'] ?>" alt="Hình ảnh">
                   </a>
@@ -81,7 +81,7 @@ include "includes/head.php"
             $num = sizeof($data);
             for ($i = 0; $i < $num; $i++) {
               ?>
-              <div class="col-sm-6 col-lg-4 text-center item mb-4">
+              <div class="col-4 text-center item mb-4">
                 <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>">
                   <img class="rounded mx-auto d-block" style="width:270px ; height:270px ;" src="images/<?php echo $data[$i]['item_image'] ?>" alt="Hình ảnh">
                 </a>

@@ -77,9 +77,9 @@ include "includes/head.php"
           $num = sizeof($data);
           for ($i = 0; $i < $num; $i++) {
             ?>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <div class="col-6 col-sm-6 col-lg-4 text-center item mb-4">
               <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"> <img class="rounded mx-auto d-block"
-                  style="width:20vw ; height:40vh ;" src="images/<?php echo $data[$i]['item_image'] ?>" alt="Image"></a>
+                  style="width:100%; height:auto ;" src="images/<?php echo $data[$i]['item_image'] ?>" alt="Image"></a>
               <?php if (strlen($data[$i]['item_title']) <= 20) { ?>
                 <h3 class="text-dark"><a
                     href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"><?php echo $data[$i]['item_title'] ?></a>
@@ -130,7 +130,7 @@ include "includes/head.php"
                 <!--  -->
                 <div class="  text-center item mb-4">
                   <a href="product.php?product_id=<?php echo $data[$i]['item_id'] ?>"> <img
-                      class="rounded mx-auto d-block" style="width:20vw ; height:vh ;"
+                      class="rounded mx-auto d-block" style="width:100%; height:auto ;"
                       src="images/<?php echo $data[$i]['item_image'] ?>" alt="Image"></a>
 
                   <h3 class="text-dark"><a

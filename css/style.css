@@ -701,7 +701,7 @@ a:hover {
   height: 700px;
 }
 
-.site-blocks-cover{
+.site-blocks-cover {
   margin-top: 81.5px;
 }
 
@@ -1654,14 +1654,17 @@ a:hover {
 .site-menu li a:hover::after {
   width: 100%;
 }
+
 /* Hiệu ứng cuộn parallax */
 .site-blocks-cover {
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
 }
+
 /* Hiệu ứng chữ và nút hiện dần*/
-.site-block-cover-content, .hover {
+.site-block-cover-content,
+.hover {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 1s ease-out 0.5s forwards;
@@ -1679,6 +1682,7 @@ a:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 /* Hiệu ứng hover nổi lên + đậm hơn */
 .banner-wrap:hover {
   transform: translateY(-5px);
@@ -1725,7 +1729,7 @@ a:hover {
 .block-16:hover {
   transform: scale(1.03);
   transition: 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .icon:hover {
@@ -1733,3 +1737,30 @@ a:hover {
   color: #28a745;
   transition: all 0.3s ease-in-out;
 }
+
+.banner-1[style*="bg_2.jpg"] {
+  background-position: right center !important;
+}
+
+@media (max-width: 767.98px) {
+  .item img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100px;
+    margin: 0 auto;
+  }
+
+  .item h3 {
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+
+  .item p.price {
+    font-size: 0.8rem;
+  }
+
+  .item {
+    padding: 5px;
+  }
+}
+
