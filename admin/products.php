@@ -214,8 +214,9 @@ include "includes/head.php";
                                     class="btn btn-sm btn-outline-warning">Sửa</a>
                             </td>
                             <td>
-                                <a href="products.php?delete=<?= $item['item_id'] ?>"
-                                    class="btn btn-sm btn-outline-danger">Xóa</a>
+                            <a href="products.php?delete=<?= $item['item_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -239,7 +240,8 @@ include "includes/head.php";
                     <p><strong>Chi tiết:</strong> <?= $item['item_details'] ?></p>
                     <div class="mt-2 d-flex gap-2 flex-wrap">
                         <a href="products.php?edit=<?= $item['item_id'] ?>" class="btn btn-sm btn-outline-warning">Sửa</a>
-                        <a href="products.php?delete=<?= $item['item_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a>
+                        <a href="products.php?delete=<?= $item['item_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
                     </div>
                 </div>
             <?php endforeach; ?>

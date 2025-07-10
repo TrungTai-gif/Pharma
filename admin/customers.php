@@ -87,7 +87,7 @@ include "includes/head.php";
             <?php
         }
         if (isset($_SESSION['id'])) {
-            edit_item($_SESSION['id']);
+            edit_user($_SESSION['id']);
         }
         ?>
         <?php
@@ -134,8 +134,9 @@ include "includes/head.php";
                                     class="btn btn-sm btn-outline-warning">Sửa</a>
                             </td>
                             <td>
-                                <a href="customers.php?delete=<?= $user['user_id'] ?>"
-                                    class="btn btn-sm btn-outline-danger">Xóa</a>
+                            <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -153,7 +154,8 @@ include "includes/head.php";
                     <p><strong>Địa chỉ:</strong> <?= $user['user_address'] ?></p>
                     <div class="mt-2 d-flex gap-2 flex-wrap">
                         <a href="customers.php?edit=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-warning">Sửa</a>
-                        <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a>
+                        <a href="customers.php?delete=<?= $user['user_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">Xóa</a>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -187,7 +187,9 @@ include "includes/head.php";
                             <td>
                                 <?php if ($admin['admin_id'] != $_SESSION['admin_id']): ?>
                                     <a href="admin.php?delete=<?= $admin['admin_id'] ?>"
+                                        onclick="return confirm('Bạn có chắc chắn muốn xóa quản trị viên này không?')"
                                         class="btn btn-sm btn-outline-danger">Xóa</a>
+
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -207,7 +209,9 @@ include "includes/head.php";
                     <div class="mt-2 d-flex gap-2 flex-wrap">
                         <a href="admin.php?edit=<?= $admin['admin_id'] ?>" class="btn btn-sm btn-outline-warning">Sửa</a>
                         <?php if ($admin['admin_id'] != $_SESSION['admin_id']): ?>
-                            <a href="admin.php?delete=<?= $admin['admin_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a>
+                            <a href="admin.php?delete=<?= $admin['admin_id'] ?>"
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa quản trị viên này không?')"
+                                class="btn btn-sm btn-outline-danger">Xóa</a>
                         <?php endif; ?>
                     </div>
                 </div>

@@ -76,7 +76,9 @@ if (isset($_GET['search_order'])) {
                     <td style="color: <?= $order['order_status'] == 1 ? 'green' : 'red' ?>">
                         <?= $order['order_status'] == 1 ? 'Đã giao' : 'Chờ xử lý' ?>
                     </td>
-                    <td><a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a></td>
+                    <td><a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')">Xóa</a>
+</td>
                     <td>
                         <?php if ($order['order_status'] == 1): ?>
                             <a href="orders.php?undo=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Hoàn tác</a>
@@ -108,7 +110,8 @@ if (isset($_GET['search_order'])) {
                 </span>
             </p>
             <div class="mt-2 d-flex gap-2 flex-wrap">
-                <a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a>
+                <a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger"
+   onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')">Xóa</a>
                 <?php if ($order['order_status'] == 1): ?>
                     <a href="orders.php?undo=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Hoàn tác</a>
                 <?php else: ?>
