@@ -5,7 +5,7 @@ include "includes/head.php";
 <body>
     <?php
     include "includes/header.php"
-    ?>
+        ?>
 
     <?php
     include "includes/sidebar.php";
@@ -15,124 +15,147 @@ include "includes/head.php";
         message();
         ?>
         <div class="container">
-            <div class="row align-items-start">
-                <div class="col">
-                    <br>
-                    <h2>Chi tiết đơn hàng</h2>
-                    <br>
+            <div class="row align-items-start mt-3">
+                <!-- Cột trái: tiêu đề -->
+                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                    <h5 class="mb-2">Chi tiết đơn hàng</h5>
                 </div>
-                <div class="col"></div>
-                <div class="col">
-                    <br>
-                    <form class="d-flex" method="GET" action="orders.php">
-                        <input class="form-control me-2 col" type="search" name="search_order_id" placeholder="Tìm đơn hàng (ID)" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit" name="search_order" value="search">Tìm kiếm</button>
+
+                <!-- Cột giữa: chừa trống căn giữa -->
+                <div class="d-none d-md-block col-md-4"></div>
+
+                <!-- Cột phải: ô tìm kiếm -->
+                <div class="col-12 col-md-4">
+                    <form class="d-flex flex-column flex-md-row" method="GET" action="orders.php">
+                        <input class="form-control form-control-sm me-md-2 mb-2 mb-md-0" type="search"
+                            name="search_order_id" placeholder="Tìm đơn hàng (ID)" aria-label="Search">
+                        <button class="btn btn-sm btn-outline-secondary" type="submit" name="search_order"
+                            value="search">Tìm</button>
                     </form>
-                    <br>
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">ID người dùng</th>
-                        <th scope="col">ID sản phẩm</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Ngày đặt hàng</th>
-                        <th scope="col">Trạng thái đơn</th>
-                </thead>
+        <?php
+$data = all_orders();
+delete_order();
+if (isset($_GET['search_order'])) {
+    $query = search_order();
+    if (!empty($query)) {
+        $data = $query;
+    } else {
+        get_redirect("orders.php");
+    }
+}
+?>
 
-                <tbody>
-                    <?php
-                    $data = all_orders();
-                    delete_order();
-                    if (isset($_GET['search_order'])) {
-                        $query = search_order();
-                        if (!empty($query)) {
-                            $data = $query;
-                        } else {
-                            get_redirect("orders.php");
-                        }
-                    }
-                    $num = sizeof($data);
-                    for ($i = 0; $i < $num; $i++) {
-                    ?>
-                        <tr>
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $data[$i]['order_id'] ?></td>
-                            <td><?php echo $data[$i]['user_id'] ?></td>
-                            <td><?php echo $data[$i]['item_id'] ?></td>
-                            <td><?php echo $data[$i]['order_quantity'] ?></td>
-                            <td><?php echo $data[$i]['order_date'] ?></td>
-                            <?php if ($data[$i]['order_status'] == 1) { ?>
-                                <td style="color: green;">
-                                    Đã giao
-                                </td>
-                            <?php } else { ?>
-                                <td style="color: red;">
-                                    Chờ xử lý
-                                </td>
-                            <?php } ?>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger"><a style="text-decoration: none; color:black;" href="orders.php?delete=<?php echo $data[$i]['order_id'] ?>">Xóa</a></button>
-                            </td>
+<!-- ✅ Bảng cho Desktop -->
+<div class="table-responsive d-none d-md-block">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>ID người dùng</th>
+                <th>ID sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Ngày đặt hàng</th>
+                <th>Trạng thái</th>
+                <th colspan="5">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data as $i => $order): ?>
+                <tr>
+                    <td><?= $i ?></td>
+                    <td><?= $order['order_id'] ?></td>
+                    <td><?= $order['user_id'] ?></td>
+                    <td><?= $order['item_id'] ?></td>
+                    <td><?= $order['order_quantity'] ?></td>
+                    <td><?= $order['order_date'] ?></td>
+                    <td style="color: <?= $order['order_status'] == 1 ? 'green' : 'red' ?>">
+                        <?= $order['order_status'] == 1 ? 'Đã giao' : 'Chờ xử lý' ?>
+                    </td>
+                    <td><a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a></td>
+                    <td>
+                        <?php if ($order['order_status'] == 1): ?>
+                            <a href="orders.php?undo=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Hoàn tác</a>
+                        <?php else: ?>
+                            <a href="orders.php?done=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-success">Hoàn thành</a>
+                        <?php endif; ?>
+                    </td>
+                    <td><a href="customers.php?id=<?= $order['user_id'] ?>" class="btn btn-sm btn-outline-info">Chi tiết KH</a></td>
+                    <td><a href="products.php?id=<?= $order['item_id'] ?>" class="btn btn-sm btn-outline-info">Chi tiết SP</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
-                            <?php if ($data[$i]['order_status'] == 1) { ?>
-                                <td>
-                                    <button type="button" class="btn btn-outline-danger"><a style="text-decoration: none; color:black;" href="orders.php?undo=<?php echo $data[$i]['order_id'] ?>">&nbsp;Hoàn tác&nbsp;</a></button>
-                                </td>
-                            <?php } else { ?>
-                                <td>
-                                    <button type="button" class="btn btn-outline-success"><a style="text-decoration: none; color:black;" href="orders.php?done=<?php echo $data[$i]['order_id'] ?>">&nbsp;Hoàn thành&nbsp;</a></button>
-                                </td>
-                            <?php } ?>
-                            <td>
-                                <button type="button" class="btn btn-outline-info"><a style="text-decoration: none; color:black;" href="customers.php?id=<?php echo $data[$i]['user_id'] ?>"> &nbsp;Chi tiết người dùng&nbsp; </a></button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info"><a style="text-decoration: none; color:black;" href="products.php?id=<?php echo $data[$i]['item_id'] ?>">Chi tiết sản phẩm</a></button>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+<!-- ✅ Mobile Cards -->
+<div class="d-block d-md-none">
+    <?php foreach ($data as $i => $order): ?>
+        <div class="card mb-3 p-3 shadow-sm">
+            <p><strong>#<?= $i ?></strong></p>
+            <p><strong>ID:</strong> <?= $order['order_id'] ?></p>
+            <p><strong>Người dùng:</strong> <?= $order['user_id'] ?></p>
+            <p><strong>Sản phẩm:</strong> <?= $order['item_id'] ?></p>
+            <p><strong>Số lượng:</strong> <?= $order['order_quantity'] ?></p>
+            <p><strong>Ngày đặt:</strong> <?= $order['order_date'] ?></p>
+            <p><strong>Trạng thái:</strong>
+                <span style="color: <?= $order['order_status'] == 1 ? 'green' : 'red' ?>">
+                    <?= $order['order_status'] == 1 ? 'Đã giao' : 'Chờ xử lý' ?>
+                </span>
+            </p>
+            <div class="mt-2 d-flex gap-2 flex-wrap">
+                <a href="orders.php?delete=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Xóa</a>
+                <?php if ($order['order_status'] == 1): ?>
+                    <a href="orders.php?undo=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-danger">Hoàn tác</a>
+                <?php else: ?>
+                    <a href="orders.php?done=<?= $order['order_id'] ?>" class="btn btn-sm btn-outline-success">Hoàn thành</a>
+                <?php endif; ?>
+                <a href="customers.php?id=<?= $order['user_id'] ?>" class="btn btn-sm btn-outline-info">Chi tiết KH</a>
+                <a href="products.php?id=<?= $order['item_id'] ?>" class="btn btn-sm btn-outline-info">Chi tiết SP</a>
+            </div>
         </div>
+    <?php endforeach; ?>
+</div>
+
         <br><br>
         <?php
         edit_admin($_SESSION['admin_id']);
         if (isset($_GET['edit'])) {
             $_SESSION['admin_id'] = $_GET['edit'];
             $data = get_admin($_SESSION['admin_id']);
-        ?>
+            ?>
             <br>
             <h2>Chỉnh sửa thông tin quản trị viên</h2>
             <form action="admin.php" method="POST">
                 <div class="form-group">
                     <label>Họ</label>
-                    <input pattern="[A-Za-z_]{1,15}" type="text" class="form-control" placeholder="<?php echo $data[0]['admin_fname'] ?>" name="admin_fname">
+                    <input pattern="[A-Za-z_]{1,15}" type="text" class="form-control"
+                        placeholder="<?php echo $data[0]['admin_fname'] ?>" name="admin_fname">
                     <div class="form-text">Vui lòng nhập họ (1-30 ký tự), không dấu hoặc số!</div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="validationTooltip01">Tên</label>
-                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control" placeholder="<?php echo $data[0]['admin_lname'] ?>" name="admin_lname">
+                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control"
+                        placeholder="<?php echo $data[0]['admin_lname'] ?>" name="admin_lname">
                     <div class="form-text">Vui lòng nhập tên (1-30 ký tự), không dấu hoặc số!</div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Địa chỉ email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?php echo $data[0]['admin_email'] ?>" name="admin_email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="<?php echo $data[0]['admin_email'] ?>" name="admin_email">
                     <div class="form-text">Vui lòng nhập email theo định dạng: example@gmail.com.</div>
                 </div>
                 <button type="submit" class="btn btn-outline-primary" value="update" name="admin_update">Cập nhật</button>
                 <button type="submit" class="btn btn-outline-danger" value="cancel" name="admin_cancel">Hủy</button>
                 <br> <br>
             </form>
-        <?php } 
+        <?php }
         add_admin();
         if (isset($_GET['add'])) { ?>
             <h2>Thêm quản trị viên mới</h2>
@@ -145,18 +168,21 @@ include "includes/head.php";
                 <br>
                 <div class="form-group">
                     <label for="validationTooltip01">Tên</label>
-                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control" placeholder="Tên" name="admin_lname">
+                    <input pattern="[A-Za-z_]{1,15}" id="validationTooltip01" type="text" class="form-control"
+                        placeholder="Tên" name="admin_lname">
                     <div class="form-text">Vui lòng nhập tên (1-30 ký tự), không dấu hoặc số!</div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Địa chỉ email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Địa chỉ email" name="admin_email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Địa chỉ email" name="admin_email">
                     <div class="form-text">Vui lòng nhập email theo định dạng: example@gmail.com.</div>
                 </div><br>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Mật khẩu</label>
-                    <input type="password" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" class="form-control" placeholder="Mật khẩu" name="admin_password">
+                    <input type="password" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$"
+                        class="form-control" placeholder="Mật khẩu" name="admin_password">
                     <div class="form-text">
                         <ul>
                             <li>Tối thiểu 8 ký tự</li>
