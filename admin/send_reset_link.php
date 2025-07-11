@@ -41,6 +41,7 @@ if (isset($_POST['email'])) {
     // ✅ Gửi email
     $mail = new PHPMailer(true);
     try {
+        $mail->CharSet = 'UTF-8';
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
