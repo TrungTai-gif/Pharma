@@ -28,13 +28,35 @@
         </div>
       </div>
 
+      <div class="card mt-4">
+        <div class="card-header">
+          Top 10 sản phẩm bán chạy nhất
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped mb-0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng bán</th>
+              </tr>
+            </thead>
+            <tbody id="topProductsTable">
+              <!-- Sẽ được JS điền dữ liệu -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
       <hr>
 
       <div class="d-flex justify-content-center flex-wrap mt-4">
         <!-- Các card điều hướng -->
         <div class="card m-4" style="width: 25rem;">
           <a href="orders.php">
-            <img class="card-img-top mx-auto d-block" src="../images/shopping-cart.svg" alt="Đơn hàng" style="width: 5rem; margin-top: 20px;">
+            <img class="card-img-top mx-auto d-block" src="../images/shopping-cart.svg" alt="Đơn hàng"
+              style="width: 5rem; margin-top: 20px;">
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">Đơn hàng</h5>
@@ -45,7 +67,8 @@
 
         <div class="card m-4" style="width: 25rem;">
           <a href="products.php">
-            <img class="card-img-top mx-auto d-block" src="../images/package.svg" alt="Sản phẩm" style="width: 5rem; margin-top: 20px;">
+            <img class="card-img-top mx-auto d-block" src="../images/package.svg" alt="Sản phẩm"
+              style="width: 5rem; margin-top: 20px;">
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">Sản phẩm</h5>
@@ -56,7 +79,8 @@
 
         <div class="card m-4" style="width: 25rem;">
           <a href="customers.php">
-            <img class="card-img-top mx-auto d-block" src="../images/users.svg" alt="Khách hàng" style="width: 5rem; margin-top: 20px;">
+            <img class="card-img-top mx-auto d-block" src="../images/users.svg" alt="Khách hàng"
+              style="width: 5rem; margin-top: 20px;">
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">Khách hàng</h5>
@@ -67,7 +91,8 @@
 
         <div class="card m-4" style="width: 25rem;">
           <a href="admin.php">
-            <img class="card-img-top mx-auto d-block" src="../images/user.svg" alt="Quản trị viên" style="width: 5rem; margin-top: 20px;">
+            <img class="card-img-top mx-auto d-block" src="../images/user.svg" alt="Quản trị viên"
+              style="width: 5rem; margin-top: 20px;">
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">Quản trị viên</h5>
@@ -85,4 +110,5 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/dashboard.js"></script> <!-- 💡 Tạo file này -->
 </body>
+
 </html>

@@ -35,10 +35,10 @@
       <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
         <h3 class="footer-heading mb-4">Liên kết nhanh</h3>
         <ul class="list-unstyled">
-          <li><a href="#">Thực phẩm bổ sung</a></li>
-          <li><a href="#">Vitamin</a></li>
-          <li><a href="#">Ăn kiêng &amp; Dinh dưỡng</a></li>
-          <li><a href="#">Trà &amp; Cà phê</a></li>
+          <li><a href='store.php'>Thực phẩm bổ sung</a></li>
+          <li><a href='store.php'>Vitamin</a></li>
+          <li><a href='store.php'>Ăn kiêng &amp; Dinh dưỡng</a></li>
+          <li><a href='store.php'>Trà &amp; Cà phê</a></li>
         </ul>
       </div>
       <div class="col-md-6 col-lg-3">
