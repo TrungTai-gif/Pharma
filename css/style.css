@@ -1763,3 +1763,6 @@ a:hover {
     padding: 5px;
   }
 }
+.banner-wrap {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

@@ -25,43 +25,36 @@ include "includes/head.php"
     </div>
 
     <div class="site-section">
-      <div class="container">
-        <div class="row align-items-stretch section-overlap">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="banner-wrap bg-primary h-100">
-              <a class="h-100">
-                <h5>Miễn phí <br> Vận chuyển</h5>
-                <p>
-                  0₫ phí giao hàng cho tất cả đơn hàng
-                  <strong>trên 100.000₫</strong>
-                </p>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="banner-wrap h-100">
-              <a class="h-100">
-                <h5>Khuyến mãi <br> giảm 50%</h5>
-                <p>
-                  Giảm đến 80% cho các sản phẩm chăm sóc sức khỏe.
-                </p>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="banner-wrap bg-warning h-100">
-              <a class="h-100">
-                <h5>Sản phẩm <br> mới</h5>
-                <p>
-                  Khám phá hơn 10.000 sản phẩm.
-                </p>
-              </a>
-            </div>
-          </div>
-
+  <div class="container">
+    <div class="row align-items-stretch section-overlap">
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="0">
+        <div class="banner-wrap bg-primary h-100">
+          <a class="h-100">
+            <h5><i class="fas fa-shipping-fast"></i> Miễn phí <br> Vận chuyển</h5>
+            <p>0₫ phí giao hàng cho tất cả đơn hàng <strong>trên 100.000₫</strong></p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="150">
+        <div class="banner-wrap h-100">
+          <a class="h-100">
+            <h5><i class="fas fa-percent"></i> Khuyến mãi <br> giảm 50%</h5>
+            <p>Giảm đến 80% cho các sản phẩm chăm sóc sức khỏe.</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="300">
+        <div class="banner-wrap bg-warning h-100">
+          <a class="h-100">
+            <h5><i class="fas fa-star"></i> Sản phẩm <br> mới</h5>
+            <p>Khám phá hơn 10.000 sản phẩm.</p>
+          </a>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
 
     <div class="site-section">
       <div class="container">
@@ -219,6 +212,15 @@ include "includes/head.php"
     include "includes/footer.php"
       ?>
   </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
 
 </body>
 
